@@ -1,5 +1,6 @@
 package top.xuqingquan.base.view.fragment
 
+import android.arch.lifecycle.MutableLiveData
 import android.content.Context
 import android.os.Bundle
 import android.support.annotation.LayoutRes
@@ -22,6 +23,9 @@ abstract class SimpleFragment : Fragment(), IFragment, FragmentOnKeyListener {
 
     private var mCache: Cache<String, Any>? = null
     protected var mContext: Context? = null
+    val launchError by lazy {
+        MutableLiveData<Throwable>()
+    }
 
     /**
      * @return 布局id

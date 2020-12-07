@@ -1,5 +1,6 @@
 package top.xuqingquan.base.view.activity
 
+import android.arch.lifecycle.MutableLiveData
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
@@ -18,6 +19,9 @@ abstract class SimpleActivity : AppCompatActivity(), IActivity {
 
     private var mCache: Cache<String, Any>? = null
     protected var onKeyListener: FragmentOnKeyListener? = null
+    val launchError by lazy {
+        MutableLiveData<Throwable>()
+    }
 
     /**
      * @return 布局id

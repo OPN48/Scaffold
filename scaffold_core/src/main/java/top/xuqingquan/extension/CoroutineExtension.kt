@@ -1,22 +1,19 @@
 package top.xuqingquan.extension
 
-import android.arch.lifecycle.MutableLiveData
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import top.xuqingquan.BuildConfig
 import top.xuqingquan.app.ScaffoldConfig
+import top.xuqingquan.base.view.activity.SimpleActivity
+import top.xuqingquan.base.view.fragment.SimpleFragment
 import kotlin.coroutines.CoroutineContext
 
 /**
  * Create by 许清泉 on 2020/6/9 18:42
  */
-val AppCompatActivity.launchError by lazy {
-    MutableLiveData<Throwable>()
-}
 
 fun <T> AppCompatActivity.launch(
     context: CoroutineContext = Dispatchers.Main.immediate,
@@ -32,7 +29,9 @@ fun <T> AppCompatActivity.launch(
                 e.printStackTrace()
             }
             catchBlock(e)
-            launchError.postValue(e)
+            if (this@launch is SimpleActivity) {
+                launchError.postValue(e)
+            }
         } finally {
             finallyBlock()
         }
@@ -44,10 +43,6 @@ fun <T> AppCompatActivity.launch(
     tryBlock: suspend CoroutineScope.() -> T
 ): Job {
     return launch(context, tryBlock, {}, {})
-}
-
-val Fragment.launchError by lazy {
-    MutableLiveData<Throwable>()
 }
 
 fun <T> Fragment.launch(
@@ -64,7 +59,9 @@ fun <T> Fragment.launch(
                 e.printStackTrace()
             }
             catchBlock(e)
-            launchError.postValue(e)
+            if (this@launch is SimpleFragment) {
+                launchError.postValue(e)
+            }
         } finally {
             finallyBlock()
         }

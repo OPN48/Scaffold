@@ -91,7 +91,7 @@ dependencies {
     //eventbus
     api rootProject.ext.deps.eventbus
     //需要用到web下载的时候需要依赖
-    compileOnly 'top.xuqingquan:web:2.5.3-support'
+    compileOnly 'top.xuqingquan:web:2.5.5-support'
     compileOnly 'org.adblockplus:adblock-android-settings:4.1.2'
     compileOnly rootProject.ext.deps.tbs
     //debug
