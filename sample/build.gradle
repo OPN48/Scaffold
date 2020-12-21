@@ -69,7 +69,7 @@ dependencies {
     androidTestImplementation rootProject.ext.deps.espresso_support
     implementation project(path: ':scaffold_core')
 //    implementation 'top.xuqingquan:scaffold:2.2.3-support'
-    implementation 'top.xuqingquan:web:2.5.3-support'
+    implementation 'top.xuqingquan:web:2.5.8-support'
 //    implementation rootProject.ext.deps.multidex
     implementation rootProject.ext.deps.multidex_support
 //    implementation rootProject.ext.deps.paging
@@ -84,7 +84,7 @@ dependencies {
     implementation 'com.swift.sandhook:hooklib:4.2.0'
     // need for android 11
     implementation 'com.swift.sandhook:nativehook:4.2.0'
-    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.4.20'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.4.21'
     implementation ('com.tencent:mmkv-static:1.2.2'){
         exclude group:'androidx.annotation',module:'annotation'
     }
